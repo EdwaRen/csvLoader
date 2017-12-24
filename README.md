@@ -53,8 +53,12 @@ Now the uploading begins!
 
 # Uploading
 
-In main.py, parent_id is the file_id of the Google Drive Repository where all the files will be uploaded to. Parent_id has been hidden in this repo for privacy reasons but otherwise it should be a line of the form
+In main.py, if you are not uploading to WATO's private folder you will need to change parent_id to something else, for example:
 
 ```
 parent_id = "ISUKJDJASN452DASYUDGHAND-DFS4"
 ```
+
+# Contact
+
+eddie.ren.2013@gmail.comprised

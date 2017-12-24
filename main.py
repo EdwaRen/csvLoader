@@ -43,7 +43,6 @@ def getEntries():
 
         os.chdir("../")
 
-    print("\nPrinting Entries: ", Entries[0])
     os.chdir("../")
     # os.chdir("Subteams/")
     #
@@ -95,7 +94,7 @@ def insertFolders(parent_id):
 
     # Perform the request and print the result.
         new_file = drive_service.files().insert(body=file_metadata, media_body=media, fields='id' ).execute()
-        pprint.pprint(new_file)
+        # pprint.pprint(new_file)
         os.chdir("../")
 
     os.chdir("../")
@@ -184,7 +183,7 @@ while True:
     children = drive_service.children().list(folderId=parent_id, **param).execute()
 
     for child in children.get('items', []):
-        print 'File Id: %s' % child['id']
+        # print 'File Id: %s' % child['id']
         drive_service.children().delete(folderId=parent_id, childId=child['id']).execute()
 
     page_token = children.get('nextPageToken')

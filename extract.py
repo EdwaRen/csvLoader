@@ -34,7 +34,7 @@ x = 0
 
 def removeDupe(s):
     a = [Software, SensorFusion, Perception, Prediction, Local, Path, Simulation, User, Embedded, Signals, Vehicle, SensorMount, Internal, Marketing, Finance, Sponsorship, Website, Graphic]
-    print(a[1][1][35])
+    # print(a[1][1][35])
     i = 0
     while i < len(a):
         x = 0
@@ -50,7 +50,7 @@ def removeDupe(s):
                     break
 
                 if a[i][x][35] == a[i][j][35] and j != x:
-                    print("\n Popped: ", i, x, j)
+                    # print("\n Popped: ", i, x, j)
                     a[i].pop(x)
 
                 j = j+1
@@ -76,7 +76,7 @@ def writeCSV(s):
 
 def addToList(a):
     b = [18, 20, 22, 24, 26, 28]
-    print("Rankings: \n ",a[18], a[20], a[22], a[24], a[26], a[28])
+    # print("Rankings: \n ",a[18], a[20], a[22], a[24], a[26], a[28])
     for i in range(0, 6):
         if a[b[i]] == "Software Interface Management":
             # print"\nSoftware Detected!\n"
