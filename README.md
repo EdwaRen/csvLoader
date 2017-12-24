@@ -27,8 +27,8 @@ $ chmod u+x start.sh
 
 The entries should be manually downloaded from a website, ie WordPress, Gravity Forms etc. Rename it entries.csv and place it within the repository. Your repo should look something like this:
 
-<p align="center">
-  <img src="./ReadmeImg/readme0.png">
+<p align="left">
+  <img src="./ReadmeImg/readme0.png" height = "200">
 </p>
 
 (In the image above, Subteams/ and file1.py should not visible unless you have already completed the next step)
@@ -38,6 +38,19 @@ The entries should be manually downloaded from a website, ie WordPress, Gravity 
 ```
 $ ./start.sh
 ```
+
+### Authorize
+
+If you have not changed the parent_id in main.py, you will need to be authorized to modify the default applicants folder. Simply check your Terminal output a few seconds after doing $ ./start.sh:
+
+<p align="left">
+  <img src="./ReadmeImg/readme2.png" width = "500px">
+</p>
+
+Go to this link and access with a verified account, then paste the verification code.
+
+Now the uploading begins!
+
 # Uploading
 
 In main.py, parent_id is the file_id of the Google Drive Repository where all the files will be uploaded to. Parent_id has been hidden in this repo for privacy reasons but otherwise it should be a line of the form

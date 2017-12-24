@@ -67,15 +67,18 @@ def insertFolders(parent_id):
         file = drive_service.files().insert(body=file_metadata, fields='id').execute()
         os.chdir(f[i]+"/")
 
+
+
         media_body = apiclient.http.MediaFileUpload(
             Entries[i],
-            mimetype=MIMETYPE,
+            mimetype='text/csv',
             resumable=True
             )
         # The body contains the metadata for the file.
         body = {
             'title': Entries[i],
             'description': "",
+            'mimetype': 'application/vnd.google-apps.spreadsheet',
             # 'parents': folder_id,
         }
         if parent_id:
