@@ -16,6 +16,8 @@ import httplib2
 import apiclient.discovery
 import apiclient.http
 import oauth2client.client
+from apiclient.discovery import build
+from apiclient.http import MediaFileUpload
 
 import glob, os
 
@@ -69,23 +71,30 @@ def insertFolders(parent_id):
 
 
 
-        media_body = apiclient.http.MediaFileUpload(
-            Entries[i],
-            mimetype='text/csv',
-            resumable=True
-            )
+
         # The body contains the metadata for the file.
-        body = {
+        # body = {
+        #     'title': "Test" + Entries[i] ,
+        #     'mimeType': 'application/vnd.google-apps.spreadsheet'
+        #     # 'parents': folder_id,
+        # }
+        file_metadata = {
             'title': Entries[i],
-            'description': "",
-            'mimetype': 'application/vnd.google-apps.spreadsheet',
-            # 'parents': folder_id,
+            'mimeType': 'application/vnd.google-apps.spreadsheet'
         }
+
+        media = MediaFileUpload( Entries[i] ,mimetype='text/csv',resumable=True)
+
+        # media_body = apiclient.http.MediaFileUpload(
+        #     Entries[i],
+        #     mimetype='text/csv',
+        #     resumable=True
+        #     )
         if parent_id:
-            body['parents'] = [{'id': file.get('id')}]
+            file_metadata['parents'] = [{'id': file.get('id')}]
 
     # Perform the request and print the result.
-        new_file = drive_service.files().insert(body=body, media_body=media_body).execute()
+        new_file = drive_service.files().insert(body=file_metadata, media_body=media, fields='id' ).execute()
         pprint.pprint(new_file)
         os.chdir("../")
 
