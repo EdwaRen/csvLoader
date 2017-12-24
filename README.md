@@ -28,7 +28,7 @@ $ chmod u+x start.sh
 The entries should be manually downloaded from a website, ie WordPress, Gravity Forms etc. Rename it entries.csv and place it within the repository. Your repo should look something like this:
 
 <p align="center">
-  <img src="./ReadmeImg/readme1.png">
+  <img src="./ReadmeImg/readme0.png">
 </p>
 
 (In the image above, Subteams/ and file1.py should not visible unless you have already completed the next step)
