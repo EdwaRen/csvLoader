@@ -160,7 +160,7 @@ DESCRIPTION = ''
 # }
 # file = drive_service.files().insert(body=file_metadata, fields='id').execute()
 # parent_id = file.get('id')
-from file1 import *
+parent_id = "1uTqv3QvjhGlQP3tp1xaquWf9-PBVUpL_"
 
 
 

@@ -23,6 +23,17 @@ $ pip install numpy tqdm requests
 $ chmod u+x start.sh
 ```
 
+### Put entries.csv into the repository
+
+The entries should be manually downloaded from a website, ie WordPress, Gravity Forms etc. Rename it entries.csv and place it within the repository. Your repo should look something like this:
+
+<p align="center">
+  <img src="./ReadmeImg/readme1.png">
+</p>
+
+(In the image above, Subteams/ and file1.py should not visible unless you have already completed the next step)
+
+
 ### Run
 ```
 $ ./start.sh
