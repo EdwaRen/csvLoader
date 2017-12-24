@@ -15,6 +15,7 @@ $ cd csvLoader
 
 ### Install python packages
 ```
+$ pip install --upgrade google-api-python-client
 $ pip install numpy tqdm requests
 ```
 
@@ -61,4 +62,4 @@ parent_id = "ISUKJDJASN452DASYUDGHAND-DFS4"
 
 # Contact
 
-eddie.ren.2013@gmail.comprised
+eddie.ren.2013@gmail.com
