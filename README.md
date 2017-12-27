@@ -60,6 +60,14 @@ In main.py, if you are not uploading to WATO's private folder you will need to c
 parent_id = "ISUKJDJASN452DASYUDGHAND-DFS4"
 ```
 
+# Known Issues
+
+If the python script extract.py crashes on the line
+```
+for row in readCSV:
+```
+Then this means the csv file 'entries.csv' in the repo needs to be processed beforehand. This can be done simply by opening entries.csv in Excel, and saving as "Windows Comma Separated (csv)" rather than the default csv.
+
 # Contact
 
 eddie.ren.2013@gmail.com

@@ -29,14 +29,36 @@ Sponsorship = []
 Website = []
 Graphic = []
 
+Software2 = []
+SensorFusion2 = []
+Perception2 = []
+Prediction2 = []
+Local2 = []
+Path2 = []
+Simulation2 = []
+User2 = []
+Embedded2 = []
+Signals2 = []
+Vehicle2 = []
+SensorMount2 = []
+Internal2 = []
+Marketing2 = []
+Finance2 = []
+Sponsorship2 = []
+Website2 = []
+Graphic2 = []
+
 e = [[]]
+e2= [[]]
 x = 0
 
-def removeDupe(s):
-    a = [Software, SensorFusion, Perception, Prediction, Local, Path, Simulation, User, Embedded, Signals, Vehicle, SensorMount, Internal, Marketing, Finance, Sponsorship, Website, Graphic]
+def removeDupe(s, a):
+    #This is an issue that arises because certain applicants selected the same subteam multiple times in their preferences or their subteam-lead preferences.
+    # a = [Software, SensorFusion, Perception, Prediction, Local, Path, Simulation, User, Embedded, Signals, Vehicle, SensorMount, Internal, Marketing, Finance, Sponsorship, Website, Graphic]
     # print(a[1][1][35])
     i = 0
     while i < len(a):
+        # Basically compares each applicant with each other. Very inefficient algorithm used but its enough for the very low amount of applicants
         x = 0
         while x < len(a[i]): #a[i][x] is an applicant
             j = x
@@ -49,6 +71,9 @@ def removeDupe(s):
                 elif j == len(a[i]):
                     break
 
+                # If they have the same entryID, removes the duplicate
+                print("Log, i, j, x", i, j, x)
+
                 if a[i][x][35] == a[i][j][35] and j != x:
                     # print("\n Popped: ", i, x, j)
                     a[i].pop(x)
@@ -58,28 +83,36 @@ def removeDupe(s):
         i = i+1
 
 
-def writeCSV(s):
+def writeCSV(s, t):
     f = ["Software Interface Management", "Sensor Fusion", "Perception", "Prediction", "Local Mapping", "Path Planning", "Simulation", "User Interface", "Embedded Implementation and Controls", "Signals Processing and Amplifier Design", "Vehicle Dynamics", "Sensor Mounting and Cooling", "Internal Affairs", "Marketing", "Finance", "Sponsorship", "Website", "Graphic Design"]
     n = ["Software","SensorFusion","Perception",
     "Prediction",    "Local",  "Path", "Simulation", "User", "Embedded", "Signals", "Vehicle", "SensorMount","Internal","Marketing","Finance", "Sponsorship", "Website","Graphic"]
     arrList = [Software, SensorFusion, Perception, Prediction, Local, Path, Simulation, User, Embedded, Signals, Vehicle, SensorMount, Internal, Marketing, Finance, Sponsorship, Website, Graphic]
+    arrList2 = [Software2, SensorFusion2, Perception2, Prediction2, Local2, Path2, Simulation2, User2, Embedded2, Signals2, Vehicle2, SensorMount2, Internal2, Marketing2, Finance2, Sponsorship2, Website2, Graphic2]
     for i in range(0, len(f)):
         name = "Subteams/"+f[i]+"/" + n[i] + "Entries.csv"
         with open(name,'wb') as resultFile:
             wr = csv.writer(resultFile, dialect='excel')
             wr.writerows(arrList[i])
+        name = "Subteams/"+f[i]+"/" + n[i] + "Entries-SubTeamLead.csv"
+        with open(name,'wb') as resultFile:
+            wr = csv.writer(resultFile, dialect='excel')
+            wr.writerows(arrList2[i])
 
     name = "Subteams/All Entries" + "/AllEntries.csv"
     with open(name,'wb') as resultFile:
         wr = csv.writer(resultFile, dialect='excel')
         wr.writerows(s)
+    name = "Subteams/All Entries" + "/AllEntries-SubTeamLead.csv"
+    with open(name,'wb') as resultFile:
+        wr = csv.writer(resultFile, dialect='excel')
+        wr.writerows(t)
 
 def addToList(a):
     b = [18, 20, 22, 24, 26, 28]
     # print("Rankings: \n ",a[18], a[20], a[22], a[24], a[26], a[28])
     for i in range(0, 6):
         if a[b[i]] == "Software Interface Management":
-            # print"\nSoftware Detected!\n"
             Software.append(a)
         elif a[b[i]] == "Sensor Fusion":
             SensorFusion.append(a)
@@ -115,6 +148,66 @@ def addToList(a):
             Website.append(a)
         elif a[b[i]] == "Graphic":
             Graphic.append(a)
+
+
+def addToList2(a, c):
+    b = [18, 20, 22]
+    for i in range(0, 3):
+        if a[b[i]] == "Software Interface Management":
+            e2.append(a)
+            Software2.append(a)
+        elif a[b[i]] == "Sensor Fusion":
+            e2.append(a)
+            SensorFusion2.append(a)
+        elif a[b[i]] == "Perception":
+            e2.append(a)
+            Perception2.append(a)
+        elif a[b[i]] == "Prediction":
+            e2.append(a)
+            Prediction2.append(a)
+        elif a[b[i]] == "Local Mapping":
+            e2.append(a)
+            Local2.append(a)
+        elif a[b[i]] == "Path Planning":
+            e2.append(a)
+            Path2.append(a)
+        elif a[b[i]] == "Simulation":
+            e2.append(a)
+            Simulation2.append(a)
+        elif a[b[i]] == "User Interface":
+            e2.append(a)
+            User2.append(a)
+        elif a[b[i]] == "Embedded Implementation and Controls":
+            e2.append(a)
+            Embedded2.append(a)
+        elif a[b[i]] == "Signals Processing and Amplifier Design":
+            e2.append(a)
+            Signals2.append(a)
+        elif a[b[i]] == "Vehicle Dynamics":
+            e2.append(a)
+            Vehicle2.append(a)
+        elif a[b[i]] == "Sensor Mounting and Cooling":
+            e2.append(a)
+            SensorMount2.append(a)
+        elif a[b[i]] == "Internal Affairs":
+            e2.append(a)
+            Internal2.append(a)
+        elif a[b[i]] == "Marketing":
+            e2.append(a)
+            Marketing2.append(a)
+        elif a[b[i]] == "Finance":
+            e2.append(a)
+            Finance2.append(a)
+        elif a[b[i]] == "Sponsorship":
+            e2.append(a)
+            Sponsorship2.append(a)
+        elif a[b[i]] == "Website":
+            e2.append(a)
+            Website2.append(a)
+        elif a[b[i]] == "Graphic":
+            e2.append(a)
+            Graphic2.append(a)
+
 
 
 with open('entries.csv', 'rb') as csvfile:
@@ -220,20 +313,45 @@ Sponsorship.append(e[0])
 Website.append(e[0])
 Graphic.append(e[0])
 
+Software2.append(e[0])
+SensorFusion2.append(e[0])
+Perception2.append(e[0])
+Prediction2.append(e[0])
+Local2.append(e[0])
+Path2.append(e[0])
+Simulation2.append(e[0])
+User2.append(e[0])
+Embedded2.append(e[0])
+Signals2.append(e[0])
+Vehicle2.append(e[0])
+SensorMount2.append(e[0])
+Internal2.append(e[0])
+Marketing2.append(e[0])
+Finance2.append(e[0])
+Sponsorship2.append(e[0])
+Website2.append(e[0])
+Graphic2.append(e[0])
+e2[0]=e[0]
+
 
 
 for i in range(0, x):
     addToList(e[i])
+    addToList2(e[i], i)
+
+a = [Software, SensorFusion, Perception, Prediction, Local, Path, Simulation, User, Embedded, Signals, Vehicle, SensorMount, Internal, Marketing, Finance, Sponsorship, Website, Graphic]
+
+a2 = [Software2, SensorFusion2, Perception2, Prediction2, Local2, Path2, Simulation2, User2, Embedded2, Signals2, Vehicle2, SensorMount2, Internal2, Marketing2, Finance2, Sponsorship2, Website2, Graphic2, e2]
 
 
-removeDupe(e)
-writeCSV(e)
+removeDupe(e, a)
+removeDupe(e, a2)
+# removeDupe(e, [e2, Software2])
+
+writeCSV(e, e2)
 
 # print(e[1])
 # print("\n\nSoftware!\n\n", Software)
 # with open("Subteams/Software Interface Management/Entries.csv",'wb') as resultFile:
 #     wr = csv.writer(resultFile, dialect='excel')
 #     wr.writerows(Software)
-
-for i in range(0, x):
-    continue

@@ -44,6 +44,7 @@ def getEntries():
         os.chdir("../")
 
     os.chdir("../")
+    print("Entries", Entries)
     # os.chdir("Subteams/")
     #
     # for file in glob.glob("*.csv"):
@@ -59,6 +60,8 @@ def insertFolders(parent_id):
     os.chdir("Subteams/")
 
     for i in range(0, len(f)):
+
+        # Inserts Folder
         file_metadata = {
             'title': f[i],
             'mimeType': 'application/vnd.google-apps.folder'
@@ -68,71 +71,40 @@ def insertFolders(parent_id):
         file = drive_service.files().insert(body=file_metadata, fields='id').execute()
         os.chdir(f[i]+"/")
 
-
-
-
-        # The body contains the metadata for the file.
-        # body = {
-        #     'title': "Test" + Entries[i] ,
-        #     'mimeType': 'application/vnd.google-apps.spreadsheet'
-        #     # 'parents': folder_id,
-        # }
+        # Inserts SubteamLead csv into Google Sheets
         file_metadata = {
-            'title': Entries[i],
+            'title': Entries[i*2],
             'mimeType': 'application/vnd.google-apps.spreadsheet'
         }
-
-        media = MediaFileUpload( Entries[i] ,mimetype='text/csv',resumable=True)
-
-        # media_body = apiclient.http.MediaFileUpload(
-        #     Entries[i],
-        #     mimetype='text/csv',
-        #     resumable=True
-        #     )
+        media = MediaFileUpload( Entries[i*2] ,mimetype='text/csv',resumable=True)
         if parent_id:
             file_metadata['parents'] = [{'id': file.get('id')}]
 
-    # Perform the request and print the result.
         new_file = drive_service.files().insert(body=file_metadata, media_body=media, fields='id' ).execute()
+
+        # Inserts SubteamLead + CoreMember csv into Google Sheets
+        file_metadata = {
+            'title': Entries[(i*2)+1],
+            'mimeType': 'application/vnd.google-apps.spreadsheet'
+        }
+        media = MediaFileUpload( Entries[(i*2)+1] ,mimetype='text/csv',resumable=True)
+        if parent_id:
+            file_metadata['parents'] = [{'id': file.get('id')}]
+
+        new_file = drive_service.files().insert(body=file_metadata, media_body=media, fields='id' ).execute()
+
+
+
+
+
         # pprint.pprint(new_file)
+
+
         os.chdir("../")
 
     os.chdir("../")
 
 
-    # media_body = apiclient.http.MediaFileUpload(
-    #         FILENAME[x],
-    #         mimetype=MIMETYPE,
-    #         resumable=True
-    #         )
-    #         # The body contains the metadata for the file.
-    #     body = {
-    #     'title': FILENAME[x],
-    #     'description': "",
-    #     # 'parents': folder_id,
-    #     }
-    #     if parent_id:
-    #         body['parents'] = [{'id': parent_id}]
-    #
-    #
-    #     # Perform the request and print the result.
-    #     new_file = drive_service.files().insert(body=body, media_body=media_body).execute()
-
-
-
-
-# OAuth 2.0 scope that will be authorized.
-# Check https://developers.google.com/drive/scopes for all available scopes.
-
-# url = "http://download.thinkbroadband.com/1MB.zip"
-# url = "http://watonomous.leanwetools002.wpengine.com/wp-content/uploads/sites/14/gravity_forms/11-22355c64a37bed0f8562f3ec11ccf735/2017/12/resume_FINAL_2av6_compressed.pdf"
-# response = requests.get(url, stream=True)
-# with open('test.pdf','wb') as output:
-#     output.write(response.read())
-
-# with open("1MB", "wb") as handle:
-#     for data in tqdm(response.iter_content()):
-#         handle.write(data)
 
 
 OAUTH2_SCOPE = 'https://www.googleapis.com/auth/drive'
@@ -172,6 +144,7 @@ DESCRIPTION = ''
 # file = drive_service.files().insert(body=file_metadata, fields='id').execute()
 # parent_id = file.get('id')
 parent_id = "1uTqv3QvjhGlQP3tp1xaquWf9-PBVUpL_"
+# parent_id = "13FiNDz6lRKnz9quo-pKXl6FAIy55Stc3"
 
 
 
