@@ -1,4 +1,6 @@
 # CSV Loader
+### Deprecated: As we move forward and transition away from LeanWebTools, csv entries are now automatically uploaded via REACTonomous server-side.
+
 Bash Script to help automate and sort CSV entries into Google Drive.
 
 # Prerequisites
